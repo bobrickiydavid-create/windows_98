@@ -1,5 +1,5 @@
 let activeWindow = null, isDragging = false, offsetX = 0, offsetY = 0, preMaxState = {};
-let matrixInterval = null, calcExpr = "", isCalcEvaluated = false, resizeTimeout;
+let matrixInterval = null, calcExpr = "", isCalcEvaluated = false;
 let snakeInterval, snake = [], food = {}, snakeDx = 10, snakeDy = 0, snakeScore = 0;
 
 function updateClock() {
@@ -39,7 +39,6 @@ function openWindow(id) {
     }
     if (id === 'cmd-window') setTimeout(() => document.getElementById('cmd-input').focus(), 100);
     if (id === 'calc-window') calcClear();
-    if (id === 'paint-window') setTimeout(resizePaintCanvas, 100);
     if (id === 'computer-window') {
         document.getElementById('browser-info').innerText = navigator.userAgent;
         document.getElementById('sys-os').innerText = navigator.platform;
@@ -67,7 +66,7 @@ function minimizeWindow(id) { const w = document.getElementById(id); if (w) w.st
 
 function maximizeWindow(id) {
     const w = document.getElementById(id);
-    if (!w || id === 'calc-window' || id === 'player-window') return;
+    if (!w || id === 'calc-window' || id === 'player-window' || id === 'paint-window') return;
     if (w.dataset.maximized === "true") {
         Object.assign(w.style, preMaxState[id]);
         w.dataset.maximized = "false";
@@ -180,14 +179,6 @@ if (pC) {
     pC.onmouseup = pC.onmouseout = () => isP = false;
 }
 function clearCanvas() { if (pt && pC) { pt.fillStyle = "white"; pt.fillRect(0, 0, pC.width, pC.height); } }
-function resizePaintCanvas() {
-    const c = document.getElementById('paint-canvas'), p = document.getElementById('paint-container');
-    if (!c || !p || !pt) return;
-    const nw = p.clientWidth - 10, nh = p.clientHeight - 10;
-    if (c.width === nw && c.height === nh) return;
-    const tc = document.createElement('canvas'); tc.width = c.width; tc.height = c.height; tc.getContext('2d').drawImage(c, 0, 0);
-    c.width = nw; c.height = nh; pt.fillStyle = "white"; pt.fillRect(0, 0, nw, nh); pt.drawImage(tc, 0, 0);
-}
 
 function navigateIE() { let u = document.getElementById('ie-url').value.trim(); if (u && !u.startsWith('http')) u = 'https://' + u; document.getElementById('ie-url').value = u; document.getElementById('ie-frame').src = u; }
 function playerPlay() { document.getElementById('sys-audio')?.play().catch(()=>{}); }
@@ -220,6 +211,4 @@ function spawnFood() {
 
 document.addEventListener('DOMContentLoaded', () => {
     updateClock();
-    const pw = document.getElementById('paint-window');
-    if (pw) new ResizeObserver(() => pw.style.display !== 'none' && clearTimeout(resizeTimeout) && (resizeTimeout = setTimeout(resizePaintCanvas, 150))).observe(pw);
 });
