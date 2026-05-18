@@ -1,0 +1,305 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Courier New', Courier, monospace, Arial, sans-serif;
+    font-size: 12px;
+    background-color: #008080;
+    overflow: hidden;
+    user-select: none;
+    cursor: url('cursors/Cursor_17.png'), default !important;
+}
+
+button, 
+.icon, 
+a, 
+.start-btn, 
+.taskbar-tab, 
+input[type="color"], 
+input[type="range"] {
+    cursor: pointer !important;
+}
+
+input[type="text"], 
+input[type="password"], 
+textarea, 
+#cmd-window-body {
+    cursor: text !important;
+}
+
+#paint-canvas {
+    cursor: url('cursors/Cursor_14.png') 10 10, crosshair !important;
+}
+
+.login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background-color: #008080;
+}
+
+.window {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000000 #000000 #dfdfdf;
+    box-shadow: 1px 1px 0 0 #000;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.movable-window {
+    resize: both;
+    overflow: hidden;
+    min-width: 250px;
+    min-height: 200px;
+}
+
+.login-window {
+    width: 380px;
+    padding: 2px;
+    position: relative;
+    resize: none;
+}
+
+.title-bar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: white;
+    padding: 3px 2px 3px 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.title-bar-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.title-bar-controls button {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 0;
+    width: 16px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-bar-controls button:active {
+    border-color: #000 #dfdfdf #dfdfdf #000;
+}
+
+.window-body {
+    padding: 10px;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.form-group label {
+    width: 90px;
+}
+
+.form-group input {
+    flex-grow: 1;
+    padding: 3px;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    background: #fff;
+    outline: none;
+}
+
+button {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000000 #000000 #dfdfdf;
+    padding: 4px 15px;
+    font-size: 11px;
+    font-family: inherit;
+}
+
+button:active {
+    border-color: #000000 #dfdfdf #dfdfdf #000000;
+}
+
+.calc-btn {
+    padding: 6px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000080;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.desktop {
+    width: 100%;
+    height: calc(100% - 28px);
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.desktop-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content;
+    flex-wrap: wrap;
+    max-height: 100%;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+}
+
+.icon-img {
+    font-size: 30px;
+    margin-bottom: 4px;
+}
+
+.icon-text {
+    color: white;
+    font-size: 11px;
+    text-align: center;
+    word-break: break-all;
+    padding: 1px 2px;
+}
+
+.icon:focus .icon-text, 
+.icon:active .icon-text {
+    background-color: #000080;
+    border: 1px dotted white;
+}
+
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    background: #c0c0c0;
+    border-top: 2px solid #dfdfdf;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    box-sizing: border-box;
+    z-index: 10000;
+}
+
+.start-btn {
+    font-weight: bold;
+    padding: 2px 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.taskbar-apps {
+    flex-grow: 1;
+    display: flex;
+    margin-left: 5px;
+    gap: 3px;
+    overflow-x: auto;
+}
+
+.taskbar-tab {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+    padding: 2px 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 10px;
+}
+
+.taskbar-tab:active {
+    border-color: #000 #dfdfdf #dfdfdf #000;
+}
+
+.tray {
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    padding: 0 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.start-menu {
+    position: fixed;
+    bottom: 28px;
+    left: 0;
+    width: 200px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+    display: flex;
+    z-index: 10001;
+    padding: 2px;
+}
+
+.start-sidebar {
+    background: linear-gradient(to top, #000080, #1084d0);
+    width: 25px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 5px;
+}
+
+.sidebar-text {
+    color: white;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    white-space: nowrap;
+    margin-left: -15px;
+    font-size: 14px;
+}
+
+.start-items {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.start-item {
+    padding: 8px 5px;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.start-item:hover {
+    background: #000080;
+    color: white;
+}
