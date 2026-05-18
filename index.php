@@ -316,12 +316,11 @@ if (isset($_SESSION['os_user_id'])) {
             </div>
         </div>
 
-        <div id="paint-window" class="window movable-window" style="display: none; left: 250px; top: 20px; width: 600px; height: 500px;" data-maximized="false">
+        <div id="paint-window" class="window" style="display: none; left: 250px; top: 20px; width: 600px; height: 500px;" data-maximized="false">
             <div class="title-bar" onmousedown="startDrag(event, 'paint-window')">
                 <div class="title-bar-text">Paint</div>
                 <div class="title-bar-controls">
                     <button type="button" aria-label="Minimize" onclick="minimizeWindow('paint-window')">_</button>
-                    <button type="button" aria-label="Maximize" onclick="maximizeWindow('paint-window')">□</button>
                     <button type="button" aria-label="Close" onclick="closeWindow('paint-window')">x</button>
                 </div>
             </div>
